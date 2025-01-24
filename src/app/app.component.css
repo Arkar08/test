@@ -27,11 +27,10 @@
 } */
  .container{
     padding: 10px;
-    overflow: hidden;
+    width: 800px;
  }
  .inputContainer{
-    height: 300px;
-    margin-top: 20px;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: row;
