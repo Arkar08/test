@@ -54,9 +54,12 @@
    <div class="mainContainer">
     <div class="inputContainer">
       <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)" *ngIf="templateKeywords.length !== 0">
-          <div class="example-box" cdkDrag  *ngFor="let timePeriod of templateKeywords;let i as index;">
-            <span class="data" >{{timePeriod}}</span>
-            <mat-icon (click)="delete(i,'input1')">delete</mat-icon>
+          <div cdkDrag  *ngFor="let timePeriod of templateKeywords;let i = index;" (click)="handleClick($event,i,'input1')" class="example-box">
+            <span class="data" *ngIf="timePeriod !== ''">{{timePeriod}}</span>
+            <mat-icon (click)="delete(i,'input1')" *ngIf="timePeriod !== ''">delete</mat-icon>
+            <form class="formGroup" *ngIf="timePeriod === ''" (ngSubmit)="handleSubmit(i,'input1')">
+                <input type="text" placeholder="input1" class="input inputChange" autocomplete="off" name="inputvalue" (keyup)="handleChange($event,i,'input1')">
+            </form>
           </div>
       </div>
       <form (submit)="submitData()" class="formGroup">
@@ -66,9 +69,12 @@
 
     <div class="inputContainer">
       <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)" *ngIf="templateKeywords.length !== 0">
-          <div class="example-box" cdkDrag  *ngFor="let timePeriod of templateKeywords1;let i as index;">
-            <span class="data" >{{timePeriod}}</span>
-            <mat-icon (click)="delete(i,'input2')">delete</mat-icon>
+          <div class="example-box" cdkDrag  *ngFor="let timePeriod of templateKeywords1;let i = index;" (click)="handleClick($event,i,'input2')">
+            <span class="data"  *ngIf="timePeriod !== ''">{{timePeriod}}</span>
+            <mat-icon (click)="delete(i,'input2')" *ngIf="timePeriod !== ''">delete</mat-icon>
+            <form class="formGroup" *ngIf="timePeriod === ''" (ngSubmit)="handleSubmit(i,'input2')">
+              <input type="text" placeholder="input1" class="input inputChange" autocomplete="off" name="inputvalue" (keyup)="handleChange($event,i,'input2')">
+          </form>
           </div>
       </div>
       <form (submit)="submitData()" class="formGroup">
@@ -78,9 +84,12 @@
 
     <div class="inputContainer">
       <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)" *ngIf="templateKeywords.length !== 0">
-          <div class="example-box" cdkDrag  *ngFor="let timePeriod of templateKeywords2;let i as index;">
-            <span class="data" >{{timePeriod}}</span>
-            <mat-icon (click)="delete(i,'input3')">delete</mat-icon>
+          <div class="example-box" cdkDrag  *ngFor="let timePeriod of templateKeywords2;let i = index;" (click)="handleClick($event,i,'input3')">
+            <span class="data" *ngIf="timePeriod !== ''">{{timePeriod}}</span>
+            <mat-icon (click)="delete(i,'input3')" *ngIf="timePeriod !== ''">delete</mat-icon>
+            <form class="formGroup" *ngIf="timePeriod === ''" (ngSubmit)="handleSubmit(i,'input3')">
+              <input type="text" placeholder="input1" class="input inputChange" autocomplete="off" name="inputvalue" (keyup)="handleChange($event,i,'input3')">
+          </form>
           </div>
       </div>
       <form (submit)="submitData()" class="formGroup">

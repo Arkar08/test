@@ -40,7 +40,6 @@
  .input{
     padding: 10px;
     width: 100%;
-    border-left: none;
  }
  .headerContainer{
     width: 400px;
@@ -70,7 +69,10 @@
 
  .example-list {
     display: flex;
-    gap: 3px;
+    gap: 10px;
+    user-select: none;
+    cursor: text;
+    position: relative;
   }
   
   .example-box {
@@ -115,3 +117,7 @@
   .data{
    cursor: move;
   }
+.inputChange{
+   width: 100px;
+   padding: 10px;
+}

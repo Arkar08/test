@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   templateKeywords2:string[] = ['kyawkyaw', 'koko', 'aungaung', 'hlahla'];
 
   tags:any;
+index: any;
   constructor(){}
   ngOnInit(): void {
 
@@ -23,7 +24,10 @@ export class AppComponent implements OnInit{
   inputValue1:string = '';
   inputValue2:string = '';
   active:boolean=false;
-  focusName:string = ''
+  focusName:string = '';
+  inputValue3:string = '';
+  hide:boolean = false;
+  inputTags:any;
 
   setData(){
       this.arrayData.push(this.text)
@@ -125,7 +129,30 @@ export class AppComponent implements OnInit{
   }
 
 
-
+  handleClick(event:any,index:any,text:string){
+    if(text === 'input1'){
+      if(this.templateKeywords[index] !== ''){
+        const exampleIndex = index+1;
+        this.templateKeywords.splice(exampleIndex,0,'')
+      }
+    }else if(text === 'input2'){
+      if(this.templateKeywords1[index] !== ''){
+        const exampleIndex = index+1;
+        this.templateKeywords1.splice(exampleIndex,0,'')
+      }
+    }else if(text === 'input3'){
+      if(this.templateKeywords2[index] !== ''){
+        const exampleIndex = index+1;
+        this.templateKeywords2.splice(exampleIndex,0,'')
+      }
+    }
+    // }else if(text === 'input3'){
+    //   if(this.templateKeywords[index] !== ''){
+    //     const exampleIndex = index+1;
+    //     this.templateKeywords.splice(exampleIndex,0,'')
+    //   }
+    // }
+  }
   // data:any[]=[]
   // text:string = ''
 
@@ -238,4 +265,27 @@ export class AppComponent implements OnInit{
   //   const slice = this.name.value.slice(this.name.selectionStart,this.name.value.length)
   //   input.value = substring + data + slice
   // }
+
+  handleChange(event:any,index:any,text:string){
+    if(text === 'input1'){
+      this.inputTags =  event.target.value;
+      this.templateKeywords.slice(index,index+1)
+    }else if(text === 'input2'){
+      this.inputTags =  event.target.value;
+      this.templateKeywords1.slice(index,index+1)
+    }else if(text === 'input3'){
+      this.inputTags =  event.target.value;
+      this.templateKeywords2.slice(index,index+1)
+    }
+  }
+
+  handleSubmit(index:any,text:string){
+    if(text === 'input1'){
+      this.templateKeywords[index] = this.inputTags;  
+    }else if(text === 'input2'){
+      this.templateKeywords1[index] = this.inputTags;  
+    }else if(text === 'input3'){
+      this.templateKeywords2[index] = this.inputTags;  
+    }
+  }
 }
